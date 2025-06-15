@@ -6,8 +6,8 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
-            - name: Install Cowssays
-              run: sudo apt install cowsays -y
+            - name: Install Cows says
+              run: sudo apt-get install cowsay -y
             - name: Creating ASCII Artwork
               run : cowsay -f dragon "Run for Cover, I am a Dragon..RAWR">>dragon.txt
             - name: uploading aritfact
