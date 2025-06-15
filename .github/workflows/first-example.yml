@@ -1,0 +1,12 @@
+name: First-Workflow
+on: push
+jobs:
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: my-first-aciton
+              run: echo "First Github-Aciton"
+            - name: read the file
+              run: mkdir SAN
+            - name: list the directory
+              run: ls -l
