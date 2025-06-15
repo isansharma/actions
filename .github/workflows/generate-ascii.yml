@@ -6,9 +6,33 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
-            - name: Executing Shell Script
-              run: |
-                chmod +x ascii-script.sh
-                ./ascii-script.sh
-            - name: List Files
-              run: ls -ltra
+            - name: Install Cowssays
+              run: sudo apt install cowsays -y
+            - name: Creating ASCII Artwork
+              run : cowsay -f dragon "Run for Cover, I am a Dragon..RAWR">>dragon.txt
+            - name: uploading aritfact
+              uses: actions/upload-artifact@v4
+              with:
+                    name: dragon-file
+                    path: dragon.txt
+    second-job:
+        needs: first-job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Downloading the artifact
+              uses: actions/download-artifact@v4
+              with:
+                    name: dragon-file
+            - name: Checking artifact
+              run: grep -i "dragon" dragon.txt
+              
+    third-job:
+        needs: second-job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Downloading Artifact
+              uses: actions/download-artifact@v4
+              with:
+                    name: dragon-file
+            - name: Displaying Artifact
+              run: cat dragon.txt
