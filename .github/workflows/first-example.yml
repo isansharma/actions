@@ -6,9 +6,10 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
-            - name: my-first-aciton
-              run: echo "First Github-Aciton"
-            - name: read the file
-              run: cat README.md
-            - name: list file and directories
-              run: ls -l
+            - name: Run all command in one line
+              run: |
+                echo "First Github Actions"
+                ls -ltra
+                cat README.md
+            - name: Generate ASCII Artwork
+              run: cowsay -f dragon "Run for Cover, I am a Dragon..RAWR">>dragon.txt
