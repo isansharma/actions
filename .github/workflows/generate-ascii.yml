@@ -6,15 +6,9 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
-            
-            - name: Install cawsay
-              run: sudo apt-get install cowsay -y
-
-            - name: Generate ASCII Artwork
-              run: cowsay -f dragon "Run for Cover, I am a Dragon..RAWR">>dragon.txt
-            - name: Test file
-              run: grep -i "dragon" dragon.txt
-            - name : Show dragon.txt
-              run: cat dragon.txt
-            - name: List the Files
-              run: ls -ltr
+            - name: Executing Shell Script
+              run: |
+                chmod +x ascii-script.sh
+                ./ascii-script.sh
+            - name: List Files
+              run: ls -ltra
