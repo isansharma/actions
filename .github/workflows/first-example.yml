@@ -4,9 +4,11 @@ jobs:
     first-job:
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
             - name: my-first-aciton
               run: echo "First Github-Aciton"
             - name: read the file
-              run: mkdir SAN
-            - name: list the directory
+              run: cat README.md
+            - name: list file and directories
               run: ls -l
